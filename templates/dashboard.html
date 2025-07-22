@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>📊 iPhone Store Invoice Dashboard</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Customer</th>
+                    <th>Product</th>
+                    <th>Total (₹)</th>
+                    <th>Payment Mode</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bill in bills %}
+                <tr>
+                    <td>{{ bill[0] }}</td>
+                    <td>{{ bill[1] }}</td>
+                    <td>{{ bill[2] }}</td>
+                    <td>₹{{ "%.2f"|format(bill[6]) }}</td>
+                    <td>{{ bill[7] }}</td>
+                    <td>{{ bill[8] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

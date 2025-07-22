@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            color: #333;
+        }
+
+        .logo {
+            height: 60px;
+            display: block;
+            margin: 0 auto 20px;
+        }
+
+        .invoice-header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #000;
+            font-size: 28px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            font-size: 16px;
+        }
+
+        li {
+            margin-bottom: 12px;
+        }
+
+        strong {
+            display: inline-block;
+            width: 180px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #333;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container fade-in">
+        <img src="{{ url_for('static', filename='img/logo.jpg') }}" class="logo" alt="Logo">
+        <h2 class="invoice-header"> Invoice</h2>
+        <ul>
+            <li><strong>Customer:</strong> {{ customer }}</li>
+            <li><strong>Product:</strong> {{ product }}</li>
+            <li><strong>Quantity:</strong> {{ quantity }}</li>
+            <li><strong>Price per Unit:</strong> ₹{{ price }}</li>
+            <li><strong>GST:</strong> ₹{{ gst }}</li>
+            <li><strong>Total Amount:</strong> ₹{{ total }}</li>
+            <li><strong>Payment Method:</strong> {{ payment }}</li>
+            <li><strong>Date:</strong> {{ date }}</li>
+        </ul>
+        <a href="/" class="btn"> Create Another Invoice</a>
+    </div>
+</body>
+</html>

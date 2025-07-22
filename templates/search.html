@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Invoices</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        input:focus {
+            border-color: #000;
+            outline: none;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            background-color: #000;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #000;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        @media (max-width: 600px) {
+            form {
+                flex-direction: column;
+            }
+
+            input, .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container fade-in">
+        <h2>🔍 Search Invoices</h2>
+        <form method="get" action="/search">
+            <input type="text" name="query" placeholder="Search by customer or product" required>
+            <button type="submit" class="btn">Search</button>
+        </form>
+
+        {% if results %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Customer</th>
+                    <th>Product</th>
+                    <th>Total</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bill in results %}
+                <tr>
+                    <td>{{ bill[0] }}</td>
+                    <td>{{ bill[1] }}</td>
+                    <td>{{ bill[2] }}</td>
+                    <td>₹{{ bill[6] }}</td>
+                    <td>{{ bill[8] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            {% if request.args.get('query') %}
+                <p style="text-align:center;">No results found for "<strong>{{ request.args.get('query') }}</strong>"</p>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>

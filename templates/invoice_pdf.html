@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice PDF</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            margin: 40px;
+            color: #333;
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #000;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            font-size: 1.1rem;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            display: inline-block;
+            width: 160px;
+        }
+
+        .total {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #000;
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🧾 iPhone Store Invoice</h2>
+        <ul>
+            <li><strong>Customer:</strong> {{ bill[1] }}</li>
+            <li><strong>Product:</strong> {{ bill[2] }}</li>
+            <li><strong>Quantity:</strong> {{ bill[3] }}</li>
+            <li><strong>Unit Price:</strong> ₹{{ "%.2f"|format(bill[4]) }}</li>
+            <li><strong>GST:</strong> ₹{{ "%.2f"|format(bill[5]) }}</li>
+            <li class="total"><strong>Total:</strong> ₹{{ "%.2f"|format(bill[6]) }}</li>
+            <li><strong>Payment Method:</strong> {{ bill[7] }}</li>
+            <li><strong>Date:</strong> {{ bill[8] }}</li>
+        </ul>
+
+        <div class="footer">
+            Thank you for shopping with us!<br>
+            © iPhone Store | This invoice is system generated.
+        </div>
+    </div>
+</body>
+</html>

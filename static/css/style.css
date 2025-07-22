@@ -1,0 +1,63 @@
+.home-bg {
+    background: url('../img/bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #1d1d1f;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+}
+
+.nav-logo {
+    width: 40px;
+}
+
+.nav-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #1d1d1f;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #007aff;
+}
+
+.intro {
+    text-align: center;
+    margin-top: 80px;
+}
+
+.intro h1 {
+    font-size: 48px;
+    color: #007aff;
+    margin-bottom: 10px;
+}
+
+.intro p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.iphone-img {
+    width: 280px;
+    margin-bottom: 30px;
+}
+
+.btn-start {
+    background-color: #1d1d1f;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-start:hover {
+    background-color: #007aff;
+}
